@@ -1,0 +1,10 @@
+{% extends 'Base/base.html' %}
+{% block title %}{% endblock %}
+{% block body %}
+	<div class="navbar-placeholder"></div>
+	<div id="photoList">
+		<div v-for="photo in photoList">
+			{% include 'Shared/dynamicPhotoCard.html' %}
+		</div>
+	</div>
+{% endblock %}

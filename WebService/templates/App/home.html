@@ -1,0 +1,18 @@
+{% extends 'Base/base.html' %}
+{% block title %}{% endblock %}
+{% block body %}
+	<div class="navbar-placeholder"></div>
+	<div class="navbar-placeholder"></div>
+	{% for photo in photos %}
+		{% include 'Shared/photoCard.html' %}
+	{% endfor %}
+	{#	<div class="container">#}
+	{#		<ul>#}
+	{#			{% for user in users %}#}
+	{#				<li>#}
+	{#					<a href="{% url 'App:profile' user.id %}">{{ user.FullName }}</a>#}
+	{#				</li>#}
+	{#			{% endfor %}#}
+	{#		</ul>#}
+	{#	</div>#}
+{% endblock %}

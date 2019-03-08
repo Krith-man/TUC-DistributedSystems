@@ -1,0 +1,52 @@
+{% extends 'Base/base.html' %}
+{% block title %}Profile - {% endblock %}
+{% block body %}
+	<div class="navbar-placeholder"></div>
+	<div class="navbar-placeholder"></div>
+	<div class="container">
+		<div class="row mb-5">
+			<div class="col-4">
+				<a class="" href="{% url 'App:uploadProfilePhoto' %}">
+					{% if user.profile.ProfilePhoto.url %}
+						<img class="" style="height: 150px; width: 150px; border-radius: 100%"
+						     src="{{ user.profile.ProfilePhoto.url }}"
+						     alt="">
+					{% else %}
+						<div class="text-center" style="height:150px; width:150px; border-radius: 100%; border: 1px solid black">
+							<span class="far fa-user text-dark align-self-center" style="font-size: 100px"></span>
+						</div>
+					{% endif %}
+				</a>
+			</div>
+			<div class="col-8">
+				<h1>
+					{{ user.get_full_name }}
+				</h1>
+				{% if isFriend %}
+					<h5>
+						<a class="text-dark" href="{% url 'App:listOfUsers' %}">
+							<i class="fas fa-user-friends"></i>
+							Friend List
+						</a>
+					</h5>
+					<h5>
+						<a class="text-dark" href="{% url 'App:createGallery' %}">
+							<i class="fas fa-book"></i>
+							Create Gallery
+						</a>
+					</h5>
+					<h5>
+						<a class="text-dark" href="{% url 'App:uploadPhoto' %}">
+							<i class="fas fa-upload"></i>
+							Upload Photo
+						</a>
+					</h5>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<hr>
+	{% for gallery in user.gallery_set.all %}
+		{% include 'Shared/galleryCard.html' %}
+	{% endfor %}
+{% endblock %}
